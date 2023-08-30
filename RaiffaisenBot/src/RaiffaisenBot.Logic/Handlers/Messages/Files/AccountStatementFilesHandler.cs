@@ -286,6 +286,7 @@ namespace RaiffaisenBot.Logic.Handlers.Messages.Files
 
                 }
                 _logger.LogInformation($"Created array length of {ms.Length}");
+                ms.Position = 0;
                 return ms;
             }
             catch (Exception ex)
