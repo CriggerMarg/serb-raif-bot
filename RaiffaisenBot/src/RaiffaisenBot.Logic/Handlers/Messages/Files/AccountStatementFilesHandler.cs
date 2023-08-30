@@ -35,18 +35,22 @@ namespace RaiffaisenBot.Logic.Handlers.Messages.Files
             }
             if (MessageType != Mapper.MapToHandlerMessageType(message.Type))
             {
+                _logger.LogInformation($"Message type is not supported for this handler, it is {Mapper.MapToHandlerMessageType(message.Type)}");
                 return false;
             }
             if (message.Document == null)
             {
+                _logger.LogInformation($"I have got an message with empty document");
                 return false;
             }
             if (string.IsNullOrEmpty(message.Document!.FileName))
             {
+                _logger.LogInformation($"I have got an document with empty file name");
                 return false;
             }
-            if (!message.Document.FileName!.EndsWith("pdf"))
+            if (!message.Document.FileName!.EndsWith("pdf", StringComparison.InvariantCultureIgnoreCase))
             {
+                _logger.LogInformation($"I have got an file that not pdf, it named {message.Document.FileName}");
                 return false;
             }
             return true;
@@ -56,17 +60,21 @@ namespace RaiffaisenBot.Logic.Handlers.Messages.Files
         {
             var message = update.Message;
 
+
             var fileId = message!.Document!.FileId;
+            _logger.LogInformation($"Got file id {fileId}");
             var fileInfo = await _botClient.GetFileAsync(fileId, cancellationToken);
             if (string.IsNullOrEmpty(fileInfo.FilePath))
             {
                 _logger.LogWarning($"For client {message!.From?.Id} uploaded file have empty file path");
                 return CreateTextMessage(message!.Chat.Id, "Unable to process file, sorry");
             }
+            _logger.LogInformation($"Got file path {fileInfo.FilePath}");
             using MemoryStream ms = new MemoryStream();
             await _botClient.DownloadFileAsync(fileInfo.FilePath, ms, cancellationToken);
             var content = await ConvertAccountStatementPdfToCsvAsync(ms.ToArray());
             string fileName = System.IO.Path.GetFileNameWithoutExtension(message.Document.FileName) + ".csv";
+            _logger.LogInformation($"Sending back file {fileName}");
             return CreateDocumentMessage(message!.Chat.Id, InputFile.FromStream(content, fileName));
         }
 
@@ -277,13 +285,14 @@ namespace RaiffaisenBot.Logic.Handlers.Messages.Files
                     }
 
                 }
-
+                _logger.LogInformation($"Created array length of {ms.Length}");
                 return ms;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "всё плохо");
             }
+            _logger.LogInformation("Shouldn't be there");
             return new MemoryStream();
         }
 
