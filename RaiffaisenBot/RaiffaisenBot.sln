@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaiffaisenBot", "src\RaiffaisenBot\RaiffaisenBot.csproj", "{447A67DF-8FD4-477B-B140-D406E014BEBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "raiffeisenbot", "src\RaiffaisenBot\raiffeisenbot.csproj", "{447A67DF-8FD4-477B-B140-D406E014BEBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaiffaisenBot.Tests", "test\RaiffaisenBot.Tests\RaiffaisenBot.Tests.csproj", "{C3F1E394-3147-4F1E-BCD6-D49A28156CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaiffeisenBot.Tests", "test\RaiffaisenBot.Tests\RaiffeisenBot.Tests.csproj", "{C3F1E394-3147-4F1E-BCD6-D49A28156CC4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaiffeisenBot.Logic", "src\RaiffaisenBot.Logic\RaiffeisenBot.Logic.csproj", "{4C660F58-8B1B-41D4-9FC0-A451EA786F1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C3F1E394-3147-4F1E-BCD6-D49A28156CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3F1E394-3147-4F1E-BCD6-D49A28156CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3F1E394-3147-4F1E-BCD6-D49A28156CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C660F58-8B1B-41D4-9FC0-A451EA786F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C660F58-8B1B-41D4-9FC0-A451EA786F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C660F58-8B1B-41D4-9FC0-A451EA786F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C660F58-8B1B-41D4-9FC0-A451EA786F1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,1 @@
+ dotnet lambda deploy-serverless -sn raifbot --region eu-central-1 -sb criggerbots -t serverless.template
